@@ -30,9 +30,6 @@ module.exports = (grunt) ->
 				"http://fgnass.github.io/spin.js/dist/spin.js"
 
 				"http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.js"
-				
-				"http://cdnjs.cloudflare.com/ajax/libs/highcharts/3.0.2/highcharts.src.js"
-				"http://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.js"
 
 			]
 
@@ -68,7 +65,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks "grunt-contrib-coffee"
 	grunt.loadNpmTasks "grunt-contrib-watch"
 
-	grunt.registerTask "copy", "Copies landing.css.", ->
+	grunt.registerTask "copy", "Copies landing.css to public folder.", ->
 		grunt.file.copy "public/landing.css", "build/landing.css"
 
 	grunt.registerTask "install", ["curl-dir"]

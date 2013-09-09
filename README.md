@@ -1,7 +1,8 @@
-# generator-erma [![Build Status](https://secure.travis-ci.org/titarenko/generator-erma.png?branch=master)](https://travis-ci.org/titarenko/generator-erma)
+# ERMA - Express-REST-Marionette Web Application Generator
+
+generator-erma [![Build Status](https://secure.travis-ci.org/titarenko/generator-erma.png?branch=master)](https://travis-ci.org/titarenko/generator-erma)
 
 A generator for [Yeoman](http://yeoman.io).
-
 
 ## Getting Started
 

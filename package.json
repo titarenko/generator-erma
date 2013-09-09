@@ -1,15 +1,19 @@
 {
   "name": "generator-erma",
-  "version": "0.0.0",
-  "description": "A generator for Yeoman",
+  "version": "0.1.0",
+  "description": "A Express-REST-Marionette web application generator for Yeoman",
   "keywords": [
+    "express",
+    "REST",
+    "Marionette",
+    "web",
     "yeoman-generator"
   ],
   "homepage": "https://github.com/titarenko/generator-erma",
   "bugs": "https://github.com/titarenko/generator-erma/issues",
   "author": {
     "name": "Constantin Titarenko",
-    "email": "",
+    "email": "constantin.titarenko@gmail.com",
     "url": "https://github.com/titarenko"
   },
   "main": "app/index.js",
