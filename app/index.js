@@ -52,5 +52,7 @@ ErmaGenerator.prototype.askFor = function askFor() {
 ErmaGenerator.prototype.app = function app() {
   this.template('_Gruntfile.coffee', 'Gruntfile.coffee');
   this.template('_package.json', 'package.json');
+  this.copy('gitignore', '.gitignore');
+  this.copy('gitattributes', '.gitattributes');
   this.copy('travis.yml', '.travis.yml');
 };

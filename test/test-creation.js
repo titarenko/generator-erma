@@ -23,7 +23,9 @@ describe('erma generator', function () {
     var expected = [
       '.travis.yml',
       'Gruntfile.coffee',
-      'package.json'
+      'package.json',
+      '.gitignore',
+      '.gitattributes'
     ];
 
     helpers.mockPrompt(this.app, {
