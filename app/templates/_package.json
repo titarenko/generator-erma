@@ -1,7 +1,7 @@
 {
   "name": "<%= name %>",
   "version": "0.1.0",
-  "description": "",
+  "description": "<%= description %>",
   "main": "index.coffee",
   "scripts": {
     "test": "coffee -co js . && cp -R tests/data js/tests/data && istanbul cover node_modules/mocha/bin/_mocha -- -t 10000 --recursive js/tests -R spec -r should && cp README.md package.json js/",
@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://titarenko@bitbucket.org/<%= author %>/<%= name %>.git"
+    "url": "https://<%= author %>@bitbucket.org/<%= author %>/<%= name %>.git"
   },
-  "keywords": [],
+  "keywords": [<%= keywords %>],
   "author": "<%= authorName %>",
   "license": "BSD",
   "dependencies": {
