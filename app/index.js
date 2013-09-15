@@ -1,8 +1,8 @@
 'use strict';
+
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
-
 
 var ErmaGenerator = module.exports = function ErmaGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
@@ -23,28 +23,34 @@ ErmaGenerator.prototype.askFor = function askFor() {
   console.log(this.yeoman);
 
   var prompts = [{
-    type: 'confirm',
-    name: 'someOption',
-    message: 'Would you like to enable this option?',
-    default: true
+    name: 'name',
+    message: 'Project name'
+  }, {
+    name: 'author',
+    message: 'Author nickname'
+  }, {
+    name: "authorName",
+    message: "Author name"
+  }, {
+    name: "description",
+    message: "Project description"
+  }, {
+    name: "keywords",
+    message: "Keywords"
   }];
 
   this.prompt(prompts, function (props) {
-    this.someOption = props.someOption;
-
+    this.name = props.name;
+    this.author = props.author;
+    this.authorName = props.authorName;
+    this.description = props.description;
+    this.keywords = props.keywords;
     cb();
   }.bind(this));
 };
 
 ErmaGenerator.prototype.app = function app() {
-  this.mkdir('app');
-  this.mkdir('app/templates');
-
-  this.copy('_package.json', 'package.json');
-  this.copy('_bower.json', 'bower.json');
-};
-
-ErmaGenerator.prototype.projectfiles = function projectfiles() {
-  this.copy('editorconfig', '.editorconfig');
-  this.copy('jshintrc', '.jshintrc');
+  this.template('_Gruntfile.coffee', 'Gruntfile.coffee');
+  this.template('_package.json', 'package.json');
+  this.copy('travis.yml', '.travis.yml');
 };
