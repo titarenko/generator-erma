@@ -21,13 +21,17 @@ describe('erma generator', function () {
 
   it('creates expected files', function (done) {
     var expected = [
-      // add files you expect to exist here.
-      '.jshintrc',
-      '.editorconfig'
+      '.travis.yml',
+      'Gruntfile.coffee',
+      'package.json'
     ];
 
     helpers.mockPrompt(this.app, {
-      'someOption': true
+      'name': 'name',
+      'author': 'bob',
+      'authorName': 'Sponge Bob',
+      'description': 'Test project',
+      'keywords': '"test", "project"'
     });
     this.app.options['skip-install'] = true;
     this.app.run({}, function () {
