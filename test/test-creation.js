@@ -25,7 +25,9 @@ describe('erma generator', function () {
       'Gruntfile.coffee',
       'package.json',
       '.gitignore',
-      '.gitattributes'
+      '.gitattributes',
+      'config.coffee',
+      'index.coffee'
     ];
 
     helpers.mockPrompt(this.app, {

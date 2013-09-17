@@ -19,7 +19,6 @@ util.inherits(ErmaGenerator, yeoman.generators.Base);
 ErmaGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
-  // have Yeoman greet the user.
   console.log(this.yeoman);
 
   var prompts = [{
@@ -49,9 +48,41 @@ ErmaGenerator.prototype.askFor = function askFor() {
   }.bind(this));
 };
 
+ErmaGenerator.prototype.modules = function modules() {
+  this.mkdir("modules");
+  this.copy("modules/Log.coffee", "modules/Log.coffee");
+  this.copy("modules/Resources.coffee", "modules/Resources.coffee");
+  this.copy("modules/Security.coffee", "modules/Security.coffee");
+  this.copy("modules/User.coffee", "modules/User.coffee");  
+};
+
+ErmaGenerator.prototype.public = function public() {
+  this.mkdir("public");
+  this.mkdir("public/images");
+  this.copy("public/images/back.jpg", "public/images/back.jpg");
+  this.copy("public/landing.css", "public/landing.css");
+  this.copy("public/style.css", "public/style.css");
+};
+
+ErmaGenerator.prototype.tests = function tests() {
+  this.mkdir("tests");
+  this.mkdir("tests/modules");
+  this.copy("tests/modules/UserTests.coffee", "tests/modules/UserTests.coffee");
+  this.template("tests/_index.coffee", "tests/index.coffee");
+};
+
+ErmaGenerator.prototype.views = function views() {
+  this.mkdir("views");
+  this.template("views/_landing.jade", "views/landing.jade");
+  this.template("views/_master.jade", "views/master.jade");
+  this.copy("views/app.jade", "views/app.jade");
+};
+
 ErmaGenerator.prototype.app = function app() {
-  this.template('_Gruntfile.coffee', 'Gruntfile.coffee');
-  this.template('_package.json', 'package.json');
+  this.template('_config.coffee', 'config.coffee');
+  this.template('_package.json', 'package.json');  
+  this.copy('Gruntfile.coffee', 'Gruntfile.coffee');
+  this.copy("index.coffee", "index.coffee");
   this.copy('gitignore', '.gitignore');
   this.copy('gitattributes', '.gitattributes');
   this.copy('travis.yml', '.travis.yml');

@@ -1,0 +1,8 @@
+extends master
+block head
+	link(href="/landing.css", type="text/css", rel="stylesheet")
+block body
+	.container: .row: .col-md-2.col-md-offset-10
+		h1 <%= name %>
+		p <%= description %>
+		a.btn.btn-primary.btn-large(href="/login/google") Start &rarr;
