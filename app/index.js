@@ -5,11 +5,21 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var exec = require('child_process').exec;
 
+var installFrontend = function installFrontend () {
+  var self = this;
+  self.log.info("Fetching dependencies and building front-end...");
+  exec("grunt install", function () {
+    exec("grunt build", function () {
+      self.log.info("Done!");
+    });
+  });
+};
+
 var ErmaGenerator = module.exports = function ErmaGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
-    this.installDependencies({ skipInstall: options['skip-install'] });
+    this.installDependencies({ skipInstall: options['skip-install'], callback: installFrontend.bind(this) });
   });
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
@@ -88,16 +98,4 @@ ErmaGenerator.prototype.app = function app() {
   this.copy('gitattributes', '.gitattributes');
   this.copy('travis.yml', '.travis.yml');
   this.template("_README.md", "README.md");
-};
-
-ErmaGenerator.prototype.post = function post() {
-  var cb = this.async();
-  var self = this;
-  self.log.info("Fetching dependencies and building front-end...");
-  exec("grunt install", function () {
-    exec("grunt build", function () {
-      self.log.info("Done!");
-      cb();
-    });
-  });
 };
