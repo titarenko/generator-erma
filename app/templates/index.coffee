@@ -8,7 +8,7 @@ Resources = require "./modules/Resources"
 
 mongoose.connect config.mongoUrl, (error) ->
 	Log.error error if error
-	Log.info "Mongoose connected to #{config.mongoUrl}."
+	Log.info "Mongoose connected to #{config.mongoUrl}." unless error
 
 app = express()
 
