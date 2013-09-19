@@ -56,7 +56,7 @@ ErmaGenerator.prototype.modules = function modules() {
   this.copy("modules/User.coffee", "modules/User.coffee");  
 };
 
-ErmaGenerator.prototype.public = function public() {
+ErmaGenerator.prototype.public_ = function public_() {
   this.mkdir("public");
   this.mkdir("public/images");
   this.copy("public/images/back.jpg", "public/images/back.jpg");
@@ -86,4 +86,5 @@ ErmaGenerator.prototype.app = function app() {
   this.copy('gitignore', '.gitignore');
   this.copy('gitattributes', '.gitattributes');
   this.copy('travis.yml', '.travis.yml');
+  this.template("_README.md", "README.md");
 };
