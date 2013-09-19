@@ -23,19 +23,19 @@ ErmaGenerator.prototype.askFor = function askFor() {
 
   var prompts = [{
     name: 'name',
-    message: 'Project name'
+    message: 'Project name (for ex., super-project)'
   }, {
     name: 'author',
-    message: 'Author nickname'
+    message: 'Author nickname (for ex., super-author)'
   }, {
     name: "authorName",
-    message: "Author name"
+    message: "Author name (for ex., Super Author)"
   }, {
     name: "description",
-    message: "Project description"
+    message: "Project description (for ex., The most awesome thing you've ever seen!)"
   }, {
     name: "keywords",
-    message: "Keywords"
+    message: "Keywords (for ex., \"keyword\", \"another expression\")"
   }];
 
   this.prompt(prompts, function (props) {
