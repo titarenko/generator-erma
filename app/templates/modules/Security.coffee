@@ -1,6 +1,7 @@
 passport = require 'passport'
 User = require './User'
 GoogleStrategy = require("passport-google-oauth").OAuth2Strategy
+config = require "../config"
 
 passport.serializeUser (user, done) ->
 	done null, user?._id?.toString()
