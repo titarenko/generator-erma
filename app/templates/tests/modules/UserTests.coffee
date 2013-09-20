@@ -39,3 +39,44 @@ describe "User", ->
 					User.count (error, count) ->
 						count.should.eql 1
 						done()
+
+	describe "#touch()", ->
+
+		it "should update last visit time as well as collection of user IPs", (done) ->
+
+			params =
+				googleId: "id"
+				email: "id@gmail.com"
+
+			User.getOrCreateByGoogleId params, (error, user) ->
+				User.touch user._id, "127.0.0.1", (error) ->
+					User.findOne {_id: user._id}, (error, user) ->
+
+						should.not.exist error
+
+						user.lastSeenAt.should.eql new Date()
+
+						user.ips.should.have.lengthOf 1
+						user.ips[0].should.eql "127.0.0.1"
+
+						done()
+
+		it "should not duplicate existing IPs", (done) ->
+
+			params =
+				googleId: "id"
+				email: "id@gmail.com"
+
+			User.getOrCreateByGoogleId params, (error, user) ->
+				User.touch user._id, "127.0.0.1", (error) ->
+					User.touch user._id, "192.168.0.1", (error) ->
+						User.touch user._id, "127.0.0.1", (error) ->
+							User.findOne {_id: user._id}, (error, user) ->
+
+								should.not.exist error
+
+								user.ips.should.have.lengthOf 2
+								user.ips.should.include "127.0.0.1"
+								user.ips.should.include "192.168.0.1"
+								
+								done()

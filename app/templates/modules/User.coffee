@@ -23,10 +23,10 @@ userSchema.statics.getOrCreateByGoogleId = (params, done) ->
 userSchema.statics.removeAll = (done) ->
 	@collection.remove {}, {w: 0}, done
 
-userSchema.methods.touch = (id, ip, done) ->
+userSchema.statics.touch = (id, ip, done) ->
 	update =
 		$set: lastSeenAt: new Date()
 		$addToSet: ips: ip
-	@collection.update {_id: id}, update, {safe: true}, done
+	@collection.update {_id: id}, update, done
 
 module.exports = mongoose.model "users", userSchema

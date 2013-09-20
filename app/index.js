@@ -77,6 +77,7 @@ ErmaGenerator.prototype.public_ = function public_() {
 
 ErmaGenerator.prototype.tests = function tests() {
   this.mkdir("tests");
+  this.mkdir("tests/data");
   this.mkdir("tests/modules");
   this.copy("tests/modules/UserTests.coffee", "tests/modules/UserTests.coffee");
   this.template("tests/_index.coffee", "tests/index.coffee");
