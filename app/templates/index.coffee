@@ -34,7 +34,9 @@ app.get "/", (req, res) ->
 
 app.get "/app", (req, res) ->
 	if req.isAuthenticated()
-		res.render "app"
+		User.touch req.user._id, req.ip, (error) ->
+			Log.error "Can't touch user #{req.user._id}." if error
+			res.render "app"
 	else
 		res.redirect "/"
 
