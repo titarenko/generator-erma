@@ -1,0 +1,3 @@
+script(id="<%= modelName %>-item-template", type="text/template")
+	tr <% for (var index in properties) { %>
+		td {{= it.<%= properties[index] %>}} <% } %>

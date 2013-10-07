@@ -1,0 +1,3 @@
+script(id="<%= modelName %>-display-template", type="text/template") <% for (var index in properties) { %>
+	label(for="<%= properties[index] %>") <%= properties[index] %>
+	input(id="<%= properties[index] %>", name="<%= properties[index] %>", type="text", value="{{= it.<%= properties[index] %>}}") <% } %>
