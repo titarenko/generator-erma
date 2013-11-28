@@ -5,6 +5,7 @@ config = require './config'
 Security = require "./modules/Security"
 Log = require "./modules/Log"
 Resources = require "./modules/Resources"
+User = require "./modules/User"
 
 mongoose.connect config.mongoUrl, (error) ->
 	Log.error error if error
