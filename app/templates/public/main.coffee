@@ -17,6 +17,7 @@ require.config
 		
 		moment: "lib/moment"
 		highcharts: "lib/highcharts.src"
+		d3: "lib/d3"
 
 		linq: "lib/linq"
 
@@ -24,8 +25,6 @@ require.config
 		tagsinput: "lib/jquery.tagsinput"
 
 		autoNumeric: "lib/autoNumeric"
-
-		crypt: "lib/sjcl"
 
 	shim:
 
@@ -42,8 +41,8 @@ require.config
 		datepicker: deps: ["bootstrap", "jquery"]
 		tagsinput: deps: ["jquery"]
 		moment: exports: "moment"
+		d3: exports: "d3"
 		autoNumeric: deps: ["jquery"]
-		crypt: exports: "sjcl"
 
 require [
 ], (app) ->
