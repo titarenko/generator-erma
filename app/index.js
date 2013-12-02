@@ -73,6 +73,12 @@ ErmaGenerator.prototype.public_ = function public_() {
   this.copy("public/images/back.jpg", "public/images/back.jpg");
   this.copy("public/landing.css", "public/landing.css");
   this.copy("public/style.css", "public/style.css");
+
+  this.copy("public/app.coffee", "public/app.coffee");
+  this.copy("public/bus.coffee", "public/bus.coffee");
+  this.copy("public/main.coffee", "public/main.coffee");
+  this.copy("public/routes.coffee", "public/routes.coffee");
+  this.copy("public/routing.coffee", "public/routing.coffee");
 };
 
 ErmaGenerator.prototype.tests = function tests() {
