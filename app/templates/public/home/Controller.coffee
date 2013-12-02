@@ -1,0 +1,3 @@
+define [], () ->
+	class Controller
+		showIndex: ->

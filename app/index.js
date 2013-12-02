@@ -79,6 +79,9 @@ ErmaGenerator.prototype.public_ = function public_() {
   this.copy("public/main.coffee", "public/main.coffee");
   this.copy("public/routes.coffee", "public/routes.coffee");
   this.copy("public/routing.coffee", "public/routing.coffee");
+
+  this.mkdir("public/home");
+  this.copy("public/home/Controller.coffee", "public/home/Controller.coffee");
 };
 
 ErmaGenerator.prototype.tests = function tests() {

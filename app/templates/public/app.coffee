@@ -4,11 +4,13 @@ define [
 	"bus"
 	"jquery"
 	"doT"
+	"validate"
 ], (Marionette, 
 	routes,
 	bus,
 	$,
-	doT) ->
+	doT,
+	validate) ->
 	
 	app = new Marionette.Application
 

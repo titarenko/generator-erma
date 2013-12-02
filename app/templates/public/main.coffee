@@ -45,6 +45,7 @@ require.config
 		autoNumeric: deps: ["jquery"]
 
 require [
+	"app"
 ], (app) ->
 	
 	app.start()
