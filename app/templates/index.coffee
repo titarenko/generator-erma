@@ -22,6 +22,7 @@ app.use express.cookieSession()
 
 app.use "/", express.static __dirname + "/build/lib"
 app.use "/img", express.static __dirname + "/build/lib"
+app.use "/fonts", express.static __dirname + "/build/lib"
 app.use "/", express.static __dirname + "/build"
 app.use "/", express.static __dirname + "/public/images"
 
