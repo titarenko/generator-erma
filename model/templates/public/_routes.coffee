@@ -1,4 +1,4 @@
-define ["../routing"], (routing) ->
+define ["../routing", "./Controller"], (routing, Controller) ->
 
 	new routing.RouteCollection
 		appRoutes:
@@ -8,4 +8,4 @@ define ["../routing"], (routing) ->
 			"<%= collectionName %>-edit": url: "<%= collectionName %>/edit/:id", action: "edit"
 			"<%= collectionName %>-show": url: "<%= collectionName %>/show/:id", action: "show"
 			"<%= collectionName %>-remove": url: "<%= collectionName %>/remove/:id", action: "remove"
-		controller: new <%= collectionClassName %>Controller
+		controller: new Controller
