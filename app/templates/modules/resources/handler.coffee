@@ -25,3 +25,5 @@ handler = (logic) ->
 				res.end error
 			else
 				res.json result
+
+module.exports = handler

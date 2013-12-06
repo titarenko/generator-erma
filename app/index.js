@@ -69,6 +69,7 @@ ErmaGenerator.prototype.modules = function modules() {
 
   this.copy("modules/models/User.coffee", "modules/models/User.coffee");  
   
+  this.copy("modules/resources/User.coffee", "modules/resources/User.coffee");
   this.copy("modules/resources/handler.coffee", "modules/resources/handler.coffee");
   this.copy("modules/resources/index.coffee", "modules/resources/index.coffee");
 };
