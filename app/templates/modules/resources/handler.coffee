@@ -14,7 +14,7 @@ getParams = (logic, req, done) ->
 		when 2
 			[req.user._id, done]
 		when 3
-			[req.user._id, extend(req.query, req.body), done]
+			[req.user._id, extend(req.query, req.body, req.params), done]
 
 handler = (logic) ->
 	(req, res) ->
