@@ -1,12 +1,6 @@
 define [
 	"routing"
-	"home/Controller"
-], (routing, 
-	HomeController) ->
+], (routing) ->
 
 	new routing.RouteTable [
-		new routing.RouteCollection
-			appRoutes:
-				"root": url: "", action: "showIndex"
-			controller: new HomeController
 	]

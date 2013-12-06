@@ -4,13 +4,12 @@ define [
 	"bus"
 	"jquery"
 	"doT"
-	"validate"
+	"Validation"
 ], (Marionette, 
 	routes,
 	bus,
 	$,
-	doT,
-	validate) ->
+	doT) ->
 	
 	app = new Marionette.Application
 
@@ -21,18 +20,41 @@ define [
 	# wiring doT rendering engine with Marionette
 	Marionette.TemplateCache::compileTemplate = doT.template
 
+	# animation for region content change event
+	Marionette.Region::open = (view) ->
+		openClass = "fadeInLeft animated"
+		animationEndEvent = "webkitAnimationEnd onAnimationEnd"
+		@$el
+			.html(view.el)
+			.addClass(openClass)
+			.one(animationEndEvent, => @$el.removeClass(openClass))
+
+	# validation errors display mechanism for Bootstrap
+	Backbone.Validation.callbacks =
+		valid: (view, attr, selector) ->
+			$el = view.$('[name=' + attr + ']')
+			$group = $el.closest('.form-group')
+
+			$group.removeClass('has-error')
+			$group.find('.help-block').html('').addClass('hidden')
+
+		invalid: (view, attr, error, selector) ->
+			$el = view.$('[name=' + attr + ']')
+			$group = $el.closest('.form-group')
+
+			$group.addClass('has-error')
+			attentionSeeker = "shake animated"
+			$group
+				.find('.help-block')
+				.html(error)
+				.removeClass("hidden")
+				.addClass(attentionSeeker)
+				.one("webkitAnimationEnd onAnimationEnd", -> $group.find(".help-block").removeClass(attentionSeeker))
+
 	# navigation events handling
 	app.addInitializer ->
 		bus.on "show", (view) -> app.viewport.show view
 		bus.on "navigate", (route) -> routes.navigate route
-
-	# jQuery validator configuration (for proper interaction with Twitter Bootstrap form elements)
-	app.addInitializer ->
-		$.validator.setDefaults
-			highlight: (element) ->
-				$(element).closest('.control-group').removeClass('success').addClass('error')
-			success: (element) ->
-    			element.text('OK!').addClass('valid').closest('.control-group').removeClass('error').addClass('success')
 
 	# launch of routing system	
 	app.addInitializer ->

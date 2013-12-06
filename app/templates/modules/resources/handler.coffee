@@ -1,5 +1,4 @@
-Log = require "./Log"
-User = require "./User"
+Log = require "../Log"
 
 extend = (target) ->
 	sources = Array::slice.call arguments, 1
@@ -26,13 +25,3 @@ handler = (logic) ->
 				res.end error
 			else
 				res.json result
-
-module.exports = 
-
-	users:
-
-		index: handler (user, done) ->
-			if user.isAdmin
-				User.findAll done
-			else
-				done null, []

@@ -13,3 +13,7 @@ body {
 	background: #f5f5f5 !important;
     background: rgba(245, 245, 245, .8) !important;
 }
+
+.table, .table th, .table td {
+	border: none !important;
+}

@@ -4,8 +4,8 @@ require "express-resource"
 config = require './config'
 Security = require "./modules/Security"
 Log = require "./modules/Log"
-Resources = require "./modules/Resources"
-User = require "./modules/User"
+resources = require "./modules/resources"
+User = require "./modules/models/User"
 
 mongoose.connect config.mongoUrl, (error) ->
 	Log.error error if error
@@ -41,7 +41,7 @@ app.get "/app", (req, res) ->
 	else
 		res.redirect "/"
 
-for name, implementation of Resources
+for name, implementation of resources
 	Security.protect "/#{name}"
 	app.resource name, implementation
 

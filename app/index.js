@@ -34,19 +34,19 @@ ErmaGenerator.prototype.askFor = function askFor() {
 
   var prompts = [{
     name: 'name',
-    message: 'Project name (for ex., super-project)'
+    message: 'Project name (for example, super-project)'
   }, {
     name: 'author',
-    message: 'Author nickname (for ex., super-author)'
+    message: 'Author nickname (for example, super-author)'
   }, {
     name: "authorName",
-    message: "Author name (for ex., Super Author)"
+    message: "Author name (for example, Super Author)"
   }, {
     name: "description",
-    message: "Project description (for ex., The most awesome thing you've ever seen!)"
+    message: "Project description (for example, The most awesome thing you've ever seen!)"
   }, {
     name: "keywords",
-    message: "Keywords (for ex., \"keyword\", \"another expression\")"
+    message: "Keywords (for example, \"keyword\", \"another expression\")"
   }];
 
   this.prompt(prompts, function (props) {
@@ -61,10 +61,16 @@ ErmaGenerator.prototype.askFor = function askFor() {
 
 ErmaGenerator.prototype.modules = function modules() {
   this.mkdir("modules");
+  this.mkdir("modules/models");
+  this.mkdir("modules/resources");
+
   this.copy("modules/Log.coffee", "modules/Log.coffee");
-  this.copy("modules/Resources.coffee", "modules/Resources.coffee");
   this.copy("modules/Security.coffee", "modules/Security.coffee");
-  this.copy("modules/User.coffee", "modules/User.coffee");  
+
+  this.copy("modules/models/User.coffee", "modules/models/User.coffee");  
+  
+  this.copy("modules/resources/handler.coffee", "modules/resources/handler.coffee");
+  this.copy("modules/resources/index.coffee", "modules/resources/index.coffee");
 };
 
 ErmaGenerator.prototype.public_ = function public_() {
@@ -79,9 +85,6 @@ ErmaGenerator.prototype.public_ = function public_() {
   this.copy("public/main.coffee", "public/main.coffee");
   this.copy("public/routes.coffee", "public/routes.coffee");
   this.copy("public/routing.coffee", "public/routing.coffee");
-
-  this.mkdir("public/home");
-  this.copy("public/home/Controller.coffee", "public/home/Controller.coffee");
 };
 
 ErmaGenerator.prototype.tests = function tests() {
@@ -97,6 +100,7 @@ ErmaGenerator.prototype.views = function views() {
   this.template("views/_landing.jade", "views/landing.jade");
   this.template("views/_master.jade", "views/master.jade");
   this.copy("views/app.jade", "views/app.jade");
+  this.copy("views/navbar.jade", "views/navbar.jade");
 };
 
 ErmaGenerator.prototype.app = function app() {

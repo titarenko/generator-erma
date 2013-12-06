@@ -1,5 +1,5 @@
 passport = require 'passport'
-User = require './User'
+User = require './models/User'
 GoogleStrategy = require("passport-google-oauth").OAuth2Strategy
 config = require "../config"
 

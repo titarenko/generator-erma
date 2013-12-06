@@ -14,10 +14,16 @@ module.exports = (grunt) ->
 			"build/lib": [
 
 				"http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.js"
-				"http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.js"
 
-				"http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.css"
-				"http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.js"
+				"http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap-theme.css"
+				"http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.css"
+				"http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/fonts/glyphicons-halflings-regular.eot"
+				"http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/fonts/glyphicons-halflings-regular.svg"
+				"http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/fonts/glyphicons-halflings-regular.ttf"
+				"http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/fonts/glyphicons-halflings-regular.woff"
+				"http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.js"
+
+				"http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css"
 
 				"http://raw.github.com/olado/doT/master/doT.js"
 				
@@ -25,6 +31,7 @@ module.exports = (grunt) ->
 				
 				"http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore.js"
 				"http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"
+				"http://cdnjs.cloudflare.com/ajax/libs/backbone.validation/0.8.2/backbone-validation.js"
 				"http://cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.1-bundled/backbone.marionette.js"
 
 				"http://fgnass.github.io/spin.js/dist/spin.js"

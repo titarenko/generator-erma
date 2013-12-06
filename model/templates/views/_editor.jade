@@ -1,0 +1,12 @@
+script(type="text/template", id="<%= collectionName %>-editor-template")
+	h1 Edit <%= modelName %>
+	form#<%= collectionName %>-editor(role="form")
+		<% for (var p in properties) { %>
+		.form-group
+			label(for="<%= properties[p].name %>") <%= properties[p].title %>
+			input#<%= properties[p].name %>.form-control(name="<%= properties[p].name %>", type="text", value="{{= it.<%= properties[p].name %>}}", placeholder="<%= properties[p].title %>")
+			p.help-block.hidden
+		<% } %>				
+		button.btn.btn-primary#save Save
+		&nbsp;
+		button.btn.btn-default#cancel Cancel

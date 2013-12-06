@@ -1,4 +1,4 @@
-User = require '../../modules/User'
+User = require '../../modules/models/User'
 should = require 'should'
 
 describe "User", ->

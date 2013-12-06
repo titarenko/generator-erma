@@ -1,0 +1,6 @@
+script(type="text/template", id="<%= collectionName %>-detail-template")
+	h1 <%= modelClassName %>
+	<% for (var p in properties) { %>
+	p {{! it.<%= properties[p].name %>}}
+	<% } %>
+	a.btn.btn-default(href="#<%= collectionName %>") Back

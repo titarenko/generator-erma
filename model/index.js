@@ -10,13 +10,20 @@ var ModelGenerator = module.exports = function ModelGenerator(args, options, con
   this.modelClassName = inflection.camelize(this.modelName);
   this.modelSlugName = inflection.dasherize(this.modelName);
   this.collectionName = inflection.pluralize(this.modelName);
-  this.properties = nameAndProperties[1].split(',');
+  this.collectionClassName = inflection.capitalize(this.collectionName);
+  this.properties = nameAndProperties[1].split(',').map(function (p) {
+    return {
+      name: p,
+      title: inflection.titleize(p)
+    };
+  });
 };
 
 util.inherits(ModelGenerator, yeoman.generators.NamedBase);
 
 ModelGenerator.prototype.modules = function modules() {
-  this.template('modules/_Model.coffee', 'modules/' + this.modelClassName + '.coffee');  
+  this.template('modules/models/_Model.coffee', 'modules/models/' + this.modelClassName + '.coffee');  
+  this.template('modules/resources/_Resource.coffee', 'modules/resources/' + this.modelClassName + '.coffee');  
 };
 
 ModelGenerator.prototype.publicFiles = function publicFiles() {
@@ -24,11 +31,12 @@ ModelGenerator.prototype.publicFiles = function publicFiles() {
   this.mkdir(target);
   target += '/';
   this.template('public/_Collection.coffee', target + 'Collection.coffee');
-  this.template('public/_CollectionView.coffee', target + 'CollectionView.coffee');
-  this.template('public/_DisplayView.coffee', target + 'DisplayView.coffee');
+  this.template('public/_Controller.coffee', target + 'Controller.coffee');
+  this.template('public/_DetailView.coffee', target + 'DetailView.coffee');
   this.template('public/_EditorView.coffee', target + 'EditorView.coffee');
+  this.template('public/_ListView.coffee', target + 'ListView.coffee');
   this.template('public/_Model.coffee', target + 'Model.coffee');
-  this.template('public/_Presenter.coffee', target + 'Presenter.coffee');
+  this.template('public/_routes.coffee', target + 'routes.coffee');
 };
 
 ModelGenerator.prototype.tests = function tests() {
@@ -39,8 +47,9 @@ ModelGenerator.prototype.views = function views() {
   var target = 'views/' + this.modelSlugName;
   this.mkdir(target);
   target += '/';
-  this.template('views/_display-template.jade', target + 'display-template.jade');
-  this.template('views/_editor-template.jade', target + 'editor-template.jade');
-  this.template('views/_item-template.jade', target + 'item-template.jade');
-  this.template('views/_list-template.jade', target + 'list-template.jade');
+  this.template('views/_detail.jade', target + 'detail.jade');
+  this.template('views/_editor.jade', target + 'editor.jade');
+  this.template('views/_list.jade', target + 'list.jade');
+  this.template('views/_remove.jade', target + 'remove.jade');
+  this.copy('views/index.jade', target + 'index.jade');
 };

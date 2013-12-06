@@ -3,7 +3,6 @@ require.config
 	paths:
 
 		jquery: "lib/jquery"
-		validate: "lib/jquery.validate"
 		
 		bootstrap: "lib/bootstrap"
 
@@ -11,6 +10,7 @@ require.config
 		
 		underscore: "lib/underscore"
 		Backbone: "lib/backbone"
+		Validation: "lib/backbone-validation"
 		Marionette: "lib/backbone.marionette"
 
 		Spin: "lib/spin"
@@ -30,7 +30,6 @@ require.config
 
 		jquery: exports: "$"
 		underscore: exports: "_"
-		validate: deps: ["jquery"]
 		bootstrap: deps: ["jquery"]
 		Marionette: 
 			deps: ["Backbone"]
@@ -38,6 +37,7 @@ require.config
 		Backbone: 
 			deps: ["underscore", "jquery"]
 			exports: "Backbone"
+		Validation: deps: ["Backbone"]
 		datepicker: deps: ["bootstrap", "jquery"]
 		tagsinput: deps: ["jquery"]
 		moment: exports: "moment"
