@@ -1,6 +1,6 @@
 # ERMA - Express-REST-Marionette Web Application Generator
 
-generator-erma [![Build Status](https://secure.travis-ci.org/titarenko/generator-erma.png?branch=master)](https://travis-ci.org/titarenko/generator-erma) [![Code Climate](https://codeclimate.com/github/titarenko/generator-libco.png)](https://codeclimate.com/github/titarenko/generator-libco) [![Coverage Status](https://coveralls.io/repos/titarenko/generator-libco/badge.png)](https://coveralls.io/r/titarenko/generator-libco)
+generator-erma [![Build Status](https://secure.travis-ci.org/titarenko/generator-erma.png?branch=master)](https://travis-ci.org/titarenko/generator-erma) [![Code Climate](https://codeclimate.com/github/titarenko/generator-erma.png)](https://codeclimate.com/github/titarenko/generator-erma) [![Coverage Status](https://coveralls.io/repos/titarenko/generator-erma/badge.png)](https://coveralls.io/r/titarenko/generator-erma)
 
 A generator for [Yeoman](http://yeoman.io).
 
