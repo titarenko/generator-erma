@@ -1,7 +1,7 @@
 define [
 	"require"
 	"routing"
-], (reqiure, routing) ->
+], (require, routing) ->
 
 	new routing.RouteTable [
 	]
