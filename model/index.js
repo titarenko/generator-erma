@@ -53,7 +53,9 @@ ModelGenerator.prototype.publicFiles = function publicFiles() {
   this.template('public/_Model.coffee', target + 'Model.coffee');
   this.template('public/_routes.coffee', target + 'routes.coffee');
   var routes = fs.readFileSync("public/routes.coffee").toString().split(/\r?\n/);
-  routes.splice(routes.length - 2, 0, "\t\trequire './" + this.modelSlugName + "/routes.coffee'");
+  var routesFileName = "'./" + this.modelSlugName + "/routes'"
+  routes.splice(3, 0, "\t" + routesFileName);
+  routes.splice(routes.length - 2, 0, "\t\trequire " + routesFileName);
   fs.writeFileSync("public/routes.coffee", routes.join("\n"));
 };
 

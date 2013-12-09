@@ -2,7 +2,6 @@ define ["../routing", "./Controller"], (routing, Controller) ->
 
 	new routing.RouteCollection
 		appRoutes:
-			"home": url: "", action: "show"
 			"<%= collectionName %>": url: "<%= collectionName %>", action: "show"
 			"<%= collectionName %>-new": url: "<%= collectionName %>/new", action: "edit"
 			"<%= collectionName %>-edit": url: "<%= collectionName %>/edit/:id", action: "edit"
