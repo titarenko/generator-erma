@@ -25,7 +25,7 @@ util.inherits(ModelGenerator, yeoman.generators.NamedBase);
 ModelGenerator.prototype.modules = function modules() {
   this.template('modules/models/_Model.coffee', 'modules/models/' + this.modelClassName + '.coffee');  
   this.template('modules/resources/_Resource.coffee', 'modules/resources/' + this.modelClassName + '.coffee');  
-  fs.appendFileSync('modules/resources/index.coffee', "\t" + this.collectionName + ": require './" + this.modelClassName + "'");
+  fs.appendFileSync('modules/resources/index.coffee', "\t" + this.collectionName + ": require './" + this.modelClassName + "'\n");
 };
 
 ModelGenerator.prototype.publicFiles = function publicFiles() {
@@ -40,7 +40,9 @@ ModelGenerator.prototype.publicFiles = function publicFiles() {
   this.template('public/_ListView.coffee', target + 'ListView.coffee');
   this.template('public/_Model.coffee', target + 'Model.coffee');
   this.template('public/_routes.coffee', target + 'routes.coffee');
-  fs.appendFileSync("public/routes.coffee", "\t\t" + this.modelName + 'Routes');
+  var routes = fs.readFileSync("public/routes.coffee").toString().split(/\r?\n/);
+  routes.splice(routes.length - 2, 0, "\t\trequire './" + this.modelSlugName + "/routes.coffee'");
+  fs.writeFileSync("public/routes.coffee", routes.join("\n"));
 };
 
 ModelGenerator.prototype.tests = function tests() {
@@ -56,6 +58,6 @@ ModelGenerator.prototype.views = function views() {
   this.template('views/_list.jade', target + 'list.jade');
   this.template('views/_remove.jade', target + 'remove.jade');
   this.copy('views/index.jade', target + 'index.jade');
-  fs.appendFileSync("views/app.jade", "\tinclude " + this.collectionName + "/index");
-  fs.appendFileSync("views/navbar.jade", "\t\t\tli: a(href='#" + this.collectionName + "') " + this.collectionClassName);
+  fs.appendFileSync("views/app.jade", "\tinclude " + this.collectionName + "/index\n");
+  fs.appendFileSync("views/navbar.jade", "\t\t\tli: a(href='#" + this.collectionName + "') " + this.collectionClassName + "\n");
 };
