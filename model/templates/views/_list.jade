@@ -1,5 +1,5 @@
 script(type="text/template", id="<%= collectionName %>-composite-item-template")
-	<% for (var p in properties) { %> 
+	<% for (var p in properties) { %>
 	td {{! it.<%= properties[p].name %>}}
 	<% } %>
 	td
@@ -24,7 +24,7 @@ script(type="text/template", id="<%= collectionName %>-composite-template")
 	table.table.table-condensed
 		thead
 			tr
-				<% for (var p in properties) { %> 
+				<% for (var p in properties) { %>
 				th <%= properties[p].title %>
 				<% } %>
 				th
