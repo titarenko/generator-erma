@@ -3,9 +3,19 @@ var util = require('util');
 var yeoman = require('yeoman-generator');
 var inflection = require('inflection');
 var fs = require('fs');
+var exec = require('child_process').exec;
+
+var buildFrontend = function buildFrontend () {
+  var self = this;
+  self.log.info("Building front-end...");
+  exec("grunt build", function () {
+    self.log.info("Done!");
+  });
+};
 
 var ModelGenerator = module.exports = function ModelGenerator(args, options, config) {
   yeoman.generators.NamedBase.apply(this, arguments);
+  
   var nameAndProperties = this.name.split(':');
   this.modelName = inflection.camelize(nameAndProperties[0], true);
   this.modelClassName = inflection.camelize(this.modelName);
@@ -18,6 +28,8 @@ var ModelGenerator = module.exports = function ModelGenerator(args, options, con
       title: inflection.titleize(p)
     };
   });
+
+  this.on('end', buildFrontend.bind(this));
 };
 
 util.inherits(ModelGenerator, yeoman.generators.NamedBase);
