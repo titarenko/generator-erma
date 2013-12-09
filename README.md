@@ -4,6 +4,8 @@ generator-erma [![Build Status](https://secure.travis-ci.org/titarenko/generator
 
 A generator for [Yeoman](http://yeoman.io).
 
+[![NPM](https://nodei.co/npm/generator-erma.png?downloads=true&stars=true)](https://nodei.co/npm/generator-erma/)
+
 ## Getting Started
 
 ```
